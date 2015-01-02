@@ -17,7 +17,7 @@ import java.util.TimeZone;
 
 public class ExternalSortThread extends Thread{
 	
-	private static final long EXTERNAL_SORT_ALGORITHM_MAX_OBJECTS_IN_FILE = 10000;
+	private static final long MAX_OBJECTS_IN_FILE = 10000;
 	
 	List<Comparable> objectsList = new ArrayList<Comparable>();
 	List<File> filesList = new ArrayList<File>();
@@ -164,7 +164,7 @@ public class ExternalSortThread extends Thread{
 						while((o = (Comparable)ois.readObject())!=null){
 							objectsList.add(o);
 						
-							if(objectsList.size() >= EXTERNAL_SORT_ALGORITHM_MAX_OBJECTS_IN_FILE){
+							if(objectsList.size() >= MAX_OBJECTS_IN_FILE){
 								saveList();
 							}
 						}
